@@ -395,10 +395,10 @@ int main(void) {
         threads[i] = thread;
         infoArray[i] = info;
     }
-    for (uint32_t i = 0; i < total; i++) {
+    for (uint32_t i = 0; i < THREAD_COUNT; i++) {
         pthread_join(threads[i], NULL);
     }
-    for (uint32_t i = 0; i < total; i++) {
+    for (uint32_t i = 0; i < THREAD_COUNT; i++) {
         free(infoArray[i]);
     }
     free(infoArray);
