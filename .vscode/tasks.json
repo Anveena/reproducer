@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "SmartBuildClientOfOpenSSLQUICBugReproducer",
+      "type": "shell",
+      "command": "cd openSSL/client && if [ ! -f debug/main ] || [ $(find . -name '*.c' -newer debug/main | wc -l) -gt 0 ] || [ CMakeLists.txt -nt debug/main ]; then echo 'need to build client';rm -rf build;mkdir -p build;cd build; cmake .. -DCMAKE_BUILD_TYPE=Debug && make -j32; else echo 'client is up to date'; fi",
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "detail": "build client when code changed"
+    }
+  ]
+}
